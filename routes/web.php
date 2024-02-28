@@ -16,6 +16,7 @@ use App\Http\Controllers\PhotoController;
 |
 */
 
+// ROUTE
 Route::get('/', function () {
     return "Selamat Datang";
 });
@@ -51,6 +52,7 @@ Route::get('/user/{name?}', function ($name = 'John') {
     return 'Nama Saya: '.$name;
 });
 
+//CONTROLLER
 Route::resource('photos', PhotoController::class);
 
 Route::resource('photos', PhotoController::class)->only([
@@ -60,6 +62,14 @@ Route::resource('photos', PhotoController::class)->only([
 Route::resource('photos', PhotoController::class)->except([
     'create', 'store', 'update', 'destroy'
 ]);
+
+//VIEWS
+// Route::get('/greeting', function () {
+//     return view('blog.hello', ['name' => 'Nadila']);
+// });
+
+Route::get('/greeting', [WelcomeController::class,'greeting']);
+
    
 
    
